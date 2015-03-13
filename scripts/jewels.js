@@ -8,7 +8,27 @@ var jewel = (function(){
         executeRunning = false;
 
     function executeScriptQueue(){
+        var next = scriptQueue[0],
+            first,
+            script;
+        if(next && next.loaded) {
+            executeRunning = true;
+            scriptQueue.shift();
+            first = document.getElementsByTagName('script')[0];
+            script = document.createElement('script');
+            script.onload = function(){
+                if (next.callback){
+                    next.callback();
+                }
+                // try to execute more
+                executeScriptQueue();
+            };
+            script.src = next.src;
+            first.parentNode.insertBefore(script, first);
+        }else{
+            executeRunning = false;
 
+        }
     }
 
     function load(src, callback){
