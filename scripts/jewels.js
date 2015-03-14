@@ -55,11 +55,23 @@ var jewel = (function(){
     }
 
     function setup(){
+        jewel.showScreen("splash-screen");
+    }
 
+    function showScreen(screenId){
+        var dom = jewel.dom,
+            $ = dom.$,
+            activeScreen = $('#game .screen.active')[0],
+            screen = $('#' + screenId)[0];
+        if (activeScreen) {
+            dom.removeClass(activeScreen, "active");
+        }
+        dom.addClass(screen, "active");
     }
 
     return {
         load: load,
-        setup: setup
+        setup: setup,
+        showScreen: showScreen
     };
 })();
