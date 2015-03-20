@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Jewel Teeth!</title>
 
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="stylesheet" href="styles/main.css"/>
     <link rel="stylesheet" href="styles/fontfaces.css"/>
 </head>
@@ -13,7 +14,15 @@
             <h1 class="logo">Jewel <br>Teeth!</h1>
             <span class="continue">Click to continue</span>
         </div>
-        <div class="screen" id="main-menu"></div>
+        <div class="screen" id="main-menu">
+            <h2 class="logo">Jewel <br/>Teeth</h2>
+            <ul class="menu">
+                <li><button name="game-screen">Play</button></li>
+                <li><button name="high-scores">HighScore</button></li>
+                <li><button name="about">About</button></li>
+                <li><button name="exit-screen">Exit</button></li>
+            </ul>
+        </div>
         <div class="screen" id="game-screen"></div>
         <div class="screen" id="high-scores"></div>
     </div>
@@ -21,6 +30,8 @@
     <script>
         window.addEventListener("load", function(){
             jewel.load("scripts/dom.js", jewel.setup);
+            jewel.load('scripts/screen.splash.js');
+            jewel.load('scripts/screen.main-menu.js', jewel.setup);
         });
     </script>
 </body>
