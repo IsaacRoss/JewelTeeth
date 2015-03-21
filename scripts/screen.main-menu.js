@@ -23,5 +23,5 @@ jewel.screens['main-menu'] = (function(){
 
     return {
         run: run
-    }
+    };
 })();
